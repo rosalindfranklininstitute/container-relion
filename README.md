@@ -16,3 +16,5 @@ shpc install relion
 # Usage
 module load relion
 ```
+
+This module aliases `mpirun` within the container in addition to the `/usr/local/relion/bin/*` binaries. If you want to use a different (compatible) mpi build then you will need to force it using environment variables and/or loading another module after `module load relion`. 
