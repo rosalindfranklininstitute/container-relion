@@ -34,10 +34,10 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 WORKDIR /tmp/relion
 RUN git clone --branch 3.1.3 --depth 1 https://github.com/3dem/relion.git .
 WORKDIR /tmp/relion/build
-RUN cmake -DCMAKE_INSTALL_PREFIX=/usr/local/relion/ ..
-RUN make -j 4
-RUN make install
-RUN rm -rf /tmp/relion
+RUN cmake -DCMAKE_INSTALL_PREFIX=/usr/local/relion/ .. && \
+    make -j 4 && \
+    make install && \
+    rm -rf /tmp/relion
 ENV PATH="${PATH}:/usr/local/relion/bin"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/relion/lib"
 WORKDIR /
