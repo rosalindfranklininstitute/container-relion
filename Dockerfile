@@ -22,7 +22,10 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
     apt-get update -y && apt-get install --no-install-recommends -y dialog apt-utils && \
     apt-get install --no-install-recommends -y cmake git build-essential wget \
                                                python cython3 python3 python3-dev python3-pip \
-                                               mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev  && \
+                                               mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev \
+                                               libX11-dev libfontconfig1-dev libglu1-mesa-dev libice-dev libtool \
+                                               libx11-dev libxcursor-dev libxext-dev libxft-dev libxi-dev \
+                                               libxinerama-dev libxrender-dev && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
     update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 10 && \
     apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
