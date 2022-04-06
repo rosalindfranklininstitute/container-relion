@@ -18,9 +18,9 @@ url: https://quay.io/rosalindfranklininstitute/relion
 maintainer: MRC Laboratory of Molecular Biology
 description: RELION (REgularized LIkelihood OptimizatioN) implements an empirical Bayesian approach for analysis of electron cryo-microscopy (Cryo-EM).
 latest:
-  3.1.3: sha256:d3a6aac15a3908ab98b98b91334213790e08809d50d3aad12962dfcbac9de842
+  3.1.3:
 tags:
-  3.1.3: sha256:d3a6aac15a3908ab98b98b91334213790e08809d50d3aad12962dfcbac9de842
+  3.1.3:
 features:
   gpu: true
   x11: true
