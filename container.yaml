@@ -15,7 +15,7 @@
 
 docker: quay.io/rosalindfranklininstitute/relion
 url: https://quay.io/rosalindfranklininstitute/relion
-maintainer: RFI
+maintainer: MRC Laboratory of Molecular Biology
 description: RELION (REgularized LIkelihood OptimizatioN) implements an empirical Bayesian approach for analysis of electron cryo-microscopy (Cryo-EM).
 latest:
   3.1.3: sha256:025df96d34181f3e7f851da7ac3dc7d4beffaac9c9235cfa023ed24bd5d5725e
@@ -25,68 +25,4 @@ features:
   gpu: true
   x11: true
 aliases:
-  mpirun: mpirun
   relion: relion
-  relion_ctf_refine_mpi: relion_ctf_refine_mpi
-  relion_helix_inimodel2d: relion_helix_inimodel2d
-  relion_motion_refine: relion_motion_refine
-  relion_pipeliner: relion_pipeliner
-  relion_reconstruct: relion_reconstruct
-  relion_scheduler: relion_scheduler
-  relion_tiltpair_plot: relion_tiltpair_plot
-  relion_align_symmetry: relion_align_symmetry
-  relion_ctf_toolbox: relion_ctf_toolbox
-  relion_helix_toolbox: relion_helix_toolbox
-  relion_motion_refine_mpi: relion_motion_refine_mpi
-  relion_plot_delocalisation: relion_plot_delocalisation
-  relion_reconstruct_mpi: relion_reconstruct_mpi
-  relion_stack_create: relion_stack_create
-  relion_tomo_test: relion_tomo_test
-  relion_autopick: relion_autopick
-  relion_demodulate: relion_demodulate
-  relion_image_handler: relion_image_handler
-  relion_mrc2vtk: relion_mrc2vtk
-  relion_postprocess: relion_postprocess
-  relion_refine: relion_refine
-  relion_star_datablock_ctfdat: relion_star_datablock_ctfdat
-  relion_autopick_mpi: relion_autopick_mpi
-  relion_display: relion_display
-  relion_import: relion_import
-  relion_particle_FCC: relion_particle_FCC
-  relion_postprocess_mpi: relion_postprocess_mpi
-  relion_refine_mpi: relion_refine_mpi
-  relion_star_datablock_singlefiles: relion_star_datablock_singlefiles
-  relion_convert_star: relion_convert_star
-  relion_estimate_gain: relion_estimate_gain
-  relion_localsym: relion_localsym
-  relion_particle_reposition: relion_particle_reposition
-  relion_prepare_subtomo: relion_prepare_subtomo
-  relion_reposition: relion_reposition
-  relion_star_datablock_stack: relion_star_datablock_stack
-  relion_convert_to_tiff: relion_convert_to_tiff
-  relion_external_reconstruct: relion_external_reconstruct
-  relion_localsym_mpi: relion_localsym_mpi
-  relion_particle_select: relion_particle_select
-  relion_preprocess: relion_preprocess
-  relion_run_ctffind: relion_run_ctffind
-  relion_star_handler: relion_star_handler
-  relion_convert_to_tiff_mpi: relion_convert_to_tiff_mpi
-  relion_find_tiltpairs: relion_find_tiltpairs
-  relion_manualpick: relion_manualpick
-  relion_particle_subtract: relion_particle_subtract
-  relion_preprocess_mpi: relion_preprocess_mpi
-  relion_run_ctffind_mpi: relion_run_ctffind_mpi
-  relion_star_loopheader: relion_star_loopheader
-  relion_ctf_mask_test: relion_ctf_mask_test
-  relion_flex_analyse: relion_flex_analyse
-  relion_mask_create: relion_mask_create
-  relion_particle_subtract_mpi: relion_particle_subtract_mpi
-  relion_project: relion_project
-  relion_run_motioncorr: relion_run_motioncorr
-  relion_star_plottable: relion_star_plottable
-  relion_ctf_refine: relion_ctf_refine
-  relion_flex_analyse_mpi: relion_flex_analyse_mpi
-  relion_merge_particles: relion_merge_particles
-  relion_particle_symmetry_expand: relion_particle_symmetry_expand
-  relion_run_motioncorr_mpi: relion_run_motioncorr_mpi
-  relion_star_printtable: relion_star_printtable
