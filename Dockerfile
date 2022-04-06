@@ -23,7 +23,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
     apt-get install --no-install-recommends -y cmake git build-essential wget \
                                                python cython3 python3 python3-dev python3-pip \
                                                mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev \
-                                               libX11-dev libfontconfig1-dev libglu1-mesa-dev libice-dev libtool \
+                                               libfontconfig1-dev libglu1-mesa-dev libice-dev libtool \
                                                libx11-dev libxcursor-dev libxext-dev libxft-dev libxi-dev \
                                                libxinerama-dev libxrender-dev && \
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
