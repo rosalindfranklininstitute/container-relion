@@ -17,7 +17,7 @@ FROM nvidia/cuda:11.5.1-devel-ubuntu20.04 as build
 # Update LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/compat/"
 
-# Install packages and register python3 as python
+# Install packages
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get update -y && apt-get install --no-install-recommends -y dialog apt-utils && \
     apt-get install --no-install-recommends -y cmake git build-essential wget \
@@ -27,7 +27,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
                                                libxinerama-dev libxrender-dev && \
     apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-# Install relion
+# Build and install relion
 WORKDIR /tmp/relion
 RUN git clone --branch 3.1.3 --depth 1 https://github.com/3dem/relion.git .
 WORKDIR /tmp/relion/build
@@ -44,7 +44,7 @@ FROM nvidia/cuda:11.5.1-runtime-ubuntu20.04
 # Update LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/compat/"
 
-# Install packages and register python3 as python
+# Install packages
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get update -y && apt-get install --no-install-recommends -y dialog apt-utils && \
     apt-get install --no-install-recommends -y mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev \
@@ -53,7 +53,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
                                                libxinerama-dev libxrender-dev && \
     apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-# Copy compiled relion from the build image
+# Copy relion from the build image
 COPY --from=build /usr/local/relion /usr/local/relion
 ENV PATH="${PATH}:/usr/local/relion/bin"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/relion/lib"
