@@ -54,6 +54,6 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
     apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Copy compiled relion from the build image
-COPY --from=build /usr/local/relion /usr/local/
+COPY --from=build /usr/local/relion /usr/local/relion
 ENV PATH="${PATH}:/usr/local/relion/bin"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/relion/lib"
