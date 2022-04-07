@@ -25,4 +25,4 @@ features:
   gpu: true
   x11: true
 aliases:
-  relion: relion
+  relion: /usr/local/relion/bin/relion
