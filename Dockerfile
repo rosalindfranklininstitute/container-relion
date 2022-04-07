@@ -47,10 +47,10 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/co
 # Install packages and register python3 as python
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get update -y && apt-get install --no-install-recommends -y dialog apt-utils && \
-    apt-get install --no-install-recommends -y mpi-default-bin libfftw3 libtiff \
-                                               libfontconfig1 libglu1-mesa libice libtool \
-                                               libx11 libxcursor libxext libxft libxi \
-                                               libxinerama libxrender && \
+    apt-get install --no-install-recommends -y mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev \
+                                               libfontconfig1-dev libglu1-mesa-dev libice-dev libtool \
+                                               libx11-dev libxcursor-dev libxext-dev libxft-dev libxi-dev \
+                                               libxinerama-dev libxrender-dev && \
     apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Copy compiled relion from the build image
