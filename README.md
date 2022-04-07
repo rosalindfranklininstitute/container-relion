@@ -15,6 +15,23 @@ shpc install relion
 
 # Usage
 module load relion
+
+# Run relion gui
+relion
+
+# Run relion binaries via the relion-run wrapper
+relion-run relion_refine_mpi --help
+
+# Run a script directly calling relion binaries via the relion-run wrapper
+relion-run ./run_relion.sh
+
+# Run commands against the container
+relion-run which relion
+# gives the path within the container to the install location
+/usr/local/relion/bin/relion
+
+# Print the module usage help
+module help relion
 ```
 
 This module aliases `relion` for loading the relion gui but does not alias the other relion binaries. 
