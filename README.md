@@ -5,7 +5,7 @@ Install as a module share module using `shpc`.
 ```
 # Install
 cd /path/to/registry
-git clone git@github.com:rosalindfranklininstitute/relion.git
+git clone git@github.com:rosalindfranklininstitute/container-relion.git
 shpc install relion
 
 # Update
