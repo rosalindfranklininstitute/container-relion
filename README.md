@@ -1,4 +1,4 @@
-# relion
+# container-relion
 
 Install as a module share module using `shpc`.
 
