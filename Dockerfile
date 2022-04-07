@@ -12,7 +12,7 @@
 # either express or implied. See the License for the specific
 # language governing permissions and limitations under the License.
 
-FROM nvidia/cuda:11.5.1-cudnn8-devel-ubuntu20.04
+FROM nvidia/cuda:11.5.1-devel-ubuntu20.04 as build
 
 # Update LD_LIBRARY_PATH
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/compat/"
@@ -21,13 +21,10 @@ ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/co
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get update -y && apt-get install --no-install-recommends -y dialog apt-utils && \
     apt-get install --no-install-recommends -y cmake git build-essential wget \
-                                               python cython3 python3 python3-dev python3-pip \
                                                mpi-default-bin mpi-default-dev libfftw3-dev libtiff-dev \
                                                libfontconfig1-dev libglu1-mesa-dev libice-dev libtool \
                                                libx11-dev libxcursor-dev libxext-dev libxft-dev libxi-dev \
                                                libxinerama-dev libxrender-dev && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3 10 && \
-    update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 10 && \
     apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
 # Install relion
@@ -41,3 +38,22 @@ RUN cmake -DCMAKE_INSTALL_PREFIX=/usr/local/relion/ .. && \
 ENV PATH="${PATH}:/usr/local/relion/bin"
 ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/relion/lib"
 WORKDIR /
+
+FROM nvidia/cuda:11.5.1-runtime-ubuntu20.04
+
+# Update LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/cuda/lib64:/usr/local/cuda/compat/"
+
+# Install packages and register python3 as python
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+    apt-get update -y && apt-get install --no-install-recommends -y dialog apt-utils && \
+    apt-get install --no-install-recommends -y mpi-default-bin libfftw3 libtiff \
+                                               libfontconfig1 libglu1-mesa libice libtool \
+                                               libx11 libxcursor libxext libxft libxi \
+                                               libxinerama libxrender && \
+    apt-get autoremove -y --purge && apt-get clean -y && rm -rf /var/lib/apt/lists/*
+
+# Copy compiled relion from the build image
+COPY --from=build /usr/local/relion /usr/local/
+ENV PATH="${PATH}:/usr/local/relion/bin"
+ENV LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:/usr/local/relion/lib"
